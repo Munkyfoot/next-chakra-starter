@@ -64,9 +64,8 @@ const Navbar = ({
     })
 
     return (
-        <Flex w="full" align="stretch" direction="column">
+        <Flex as="nav" w="full" align="stretch" direction="column">
             <Flex
-                as="nav"
                 align="center"
                 justify="space-between"
                 wrap="wrap"
