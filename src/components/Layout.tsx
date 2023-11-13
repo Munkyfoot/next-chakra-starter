@@ -1,6 +1,7 @@
 import {
     siteCanonical,
     siteDescription,
+    siteAuthor,
     siteNavItems,
     siteTitle,
 } from "@/constants"
@@ -23,7 +24,7 @@ interface LayoutProps extends FlexProps {
 
 const Layout = ({
     title,
-    description = siteDescription,
+    description,
     children,
     fadeStyle = "delayed",
     hideNavbar = false,
@@ -42,13 +43,20 @@ const Layout = ({
         <>
             <Head>
                 <title>{`${siteTitle} | ${title}`}</title>
-                <meta name="description" content={description} />
+                <meta
+                    name="description"
+                    content={description || siteDescription}
+                />
+                <meta name="author" content={siteAuthor} />
                 <link rel="icon" href="/favicon.ico" />
 
                 <link rel="canonical" href={siteCanonical} />
 
                 <meta property="og:title" content={`${siteTitle} | ${title}`} />
-                <meta property="og:description" content={description} />
+                <meta
+                    property="og:description"
+                    content={description || siteDescription}
+                />
                 {/* TODO: Add og image */}
                 {/*<meta property="og:image" content="/og-image.png" />*/}
                 <meta property="og:url" content={siteCanonical} />

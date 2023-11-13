@@ -1,11 +1,18 @@
 import Layout from "@/components/Layout"
-import { Heading, UnorderedList, List, ListItem, Text } from "@chakra-ui/react"
+import {
+    Heading,
+    UnorderedList,
+    List,
+    ListItem,
+    Text,
+    Code,
+} from "@chakra-ui/react"
 
 export default function Home() {
     return (
         <Layout
-            title="Home"
-            description="Home page"
+            title="Start Here"
+            description="A starter template for Next.js projects using TypeScript and ChakraUI."
             gap={6}
             padding={6}
             maxW="container.lg"
@@ -54,46 +61,57 @@ export default function Home() {
                             <Heading as="h3" size="md">
                                 Layout
                             </Heading>
-                            <i>
-                                Contains the basic layout for the pages
-                                including...
-                            </i>
-                            <UnorderedList>
+                            Contains the basic layout for the pages including...
+                            <List>
                                 <ListItem>
-                                    <b>Head</b>:{" "}
+                                    <Code
+                                        colorScheme="blue"
+                                        fontWeight="semibold"
+                                    >
+                                        Head
+                                    </Code>{" "}
                                     <i>
                                         Setup with basic meta tags for SEO and
                                         integrated with site information from{" "}
-                                        <code>@/constants.ts</code>. Title and
+                                        <Code>@/constants.ts</Code>. Title and
                                         description can be passed as props.
                                     </i>
                                 </ListItem>
                                 <ListItem>
-                                    <b>Main</b>:{" "}
+                                    <Code
+                                        colorScheme="blue"
+                                        fontWeight="semibold"
+                                    >
+                                        Main
+                                    </Code>{" "}
                                     <i>
-                                        The main content of the page wrapped in
-                                        a <code>Flex</code> component. Padding,
-                                        gap, and maxWidth can be passed as
-                                        props. Children are wrapped in a{" "}
-                                        <code>SlideFadeOnView</code> component
-                                        to animate the content on page load.
-                                        This can be disabled by setting{" "}
-                                        <code>fadeStyle</code> to{" "}
-                                        <code>none</code>.
+                                        A <Code>Flex</Code> component that
+                                        contains the Navbar, which can be
+                                        optionally hidden, and page content. It
+                                        also uses the{" "}
+                                        <Code>SlideFadeOnView</Code> component
+                                        to animate the page content when it
+                                        comes into view. This can be disabled by
+                                        passing <Code>fadeStyle="none"</Code> as
+                                        a prop.
                                     </i>
                                 </ListItem>
-                            </UnorderedList>
+                            </List>
                         </ListItem>
                         <ListItem>
                             <Heading as="h3" size="md">
                                 SlideFadeOnView
                             </Heading>
-                            <i>
-                                A wrapper component for <code>SlideFade</code>{" "}
-                                from ChakraUI that uses{" "}
-                                <code>framer-motion</code> to animate the
-                                component when it comes into view.
-                            </i>
+                            A wrapper component for <Code>SlideFade</Code> from
+                            ChakraUI that uses <Code>framer-motion</Code> to
+                            animate the component when it comes into view.
+                        </ListItem>
+                        <ListItem>
+                            <Heading as="h3" size="md">
+                                Navbar
+                            </Heading>
+                            A responsive navbar component that can be configured
+                            with navigation items and a color mode toggle.
                         </ListItem>
                     </List>
                 </ListItem>
@@ -103,11 +121,11 @@ export default function Home() {
                     </Heading>
                     <List>
                         <ListItem>
-                            <b>siteTitle</b>:{" "}
+                            <Code>siteTitle</Code>{" "}
                             <i>The title of the site. Used in the title tag.</i>
                         </ListItem>
                         <ListItem>
-                            <b>siteDescription</b>:{" "}
+                            <Code>siteDescription</Code>{" "}
                             <i>
                                 The description of the site. Used in the meta
                                 description tag and og:description tag when a
@@ -115,10 +133,24 @@ export default function Home() {
                             </i>
                         </ListItem>
                         <ListItem>
-                            <b>siteCanonical</b>:{" "}
+                            <Code>siteCanonical</Code>{" "}
                             <i>
                                 The canonical URL of the site. Used in the
                                 canonical link tag and og:url tag.
+                            </i>
+                        </ListItem>
+                        <ListItem>
+                            <Code>siteAuthor</Code>{" "}
+                            <i>
+                                The author of the site. Used in the meta author
+                                tag.
+                            </i>
+                        </ListItem>
+                        <ListItem>
+                            <Code>siteNavItems</Code>{" "}
+                            <i>
+                                The navigation items for the site. Used in the{" "}
+                                <Code>Navbar</Code> component.
                             </i>
                         </ListItem>
                     </List>
@@ -137,12 +169,16 @@ export default function Home() {
                         </ListItem>
                         <ListItem>
                             <b>robots.txt</b>:{" "}
-                            <i>A robots.txt file that disallows api routes.</i>
+                            <i>
+                                A starter robots.txt file that disallows all api
+                                routes.
+                            </i>
                         </ListItem>
                         <ListItem>
                             <b>sitemap.xml</b>:{" "}
                             <i>
-                                A sitemap.xml file that includes the home page.
+                                A starter sitemap.xml file that includes the
+                                home page.
                             </i>
                         </ListItem>
                     </UnorderedList>
