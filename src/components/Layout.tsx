@@ -1,7 +1,14 @@
-import { siteCanonical, siteDescription, siteTitle } from "@/constants"
+import {
+    siteCanonical,
+    siteDescription,
+    siteNavItems,
+    siteTitle,
+} from "@/constants"
+import { NavItem } from "@/types"
 import { Flex, FlexProps } from "@chakra-ui/react"
 import Head from "next/head"
-import React from "react"
+import React, { useState, useEffect } from "react"
+import Navbar from "./Navbar"
 import SlideFadeOnView from "./SlideFadeOnView"
 
 interface LayoutProps extends FlexProps {
@@ -9,6 +16,9 @@ interface LayoutProps extends FlexProps {
     description?: string
     children: React.ReactNode
     fadeStyle?: "sync" | "delayed" | "none"
+    hideNavbar?: boolean
+    navItems?: NavItem[]
+    navItemsMergeConstants?: "replace" | "append" | "prepend"
 }
 
 const Layout = ({
@@ -16,8 +26,28 @@ const Layout = ({
     description = siteDescription,
     children,
     fadeStyle = "delayed",
+    hideNavbar = false,
+    navItems = [],
+    navItemsMergeConstants = "append",
     ...rest
 }: LayoutProps) => {
+    const [navItemsState, setNavItemsState] = useState<NavItem[]>([])
+    const mergeNavItems = () => {
+        switch (navItemsMergeConstants) {
+            case "replace":
+                return navItems
+            case "append":
+                return [...siteNavItems, ...navItems]
+            case "prepend":
+                return [...navItems, ...siteNavItems]
+            default:
+                return [...siteNavItems, ...navItems]
+        }
+    }
+    useEffect(() => {
+        setNavItemsState(mergeNavItems())
+    }, [navItems])
+
     return (
         <>
             <Head>
@@ -44,6 +74,9 @@ const Layout = ({
                 {/*<meta name="twitter:image" content="/twitter-image.png" />*/}
             </Head>
             <Flex as="main" direction="column" mx="auto" {...rest}>
+                {!hideNavbar && (
+                    <Navbar navItems={navItemsState} showColorModeToggle />
+                )}
                 {fadeStyle === "none"
                     ? children
                     : React.Children.map(children, (child, index) => {
