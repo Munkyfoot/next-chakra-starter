@@ -8,8 +8,10 @@ import {
     IconButton,
     Link,
     useColorMode,
+    useColorModeValue,
     useDisclosure,
 } from "@chakra-ui/react"
+import { useState, useEffect } from "react"
 
 interface NavbarProps extends FlexProps {
     navItems: NavItem[]
@@ -25,6 +27,26 @@ const Navbar = ({
 }: NavbarProps) => {
     const { isOpen, onToggle } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
+
+    const [stickyEngaged, setStickyEngaged] = useState(false)
+
+    if (sticky) {
+        useEffect(() => {
+            const handleScroll = () => {
+                if (window.scrollY > 0) {
+                    setStickyEngaged(true)
+                } else {
+                    setStickyEngaged(false)
+                }
+            }
+
+            window.addEventListener("scroll", handleScroll)
+
+            return () => {
+                window.removeEventListener("scroll", handleScroll)
+            }
+        }, [])
+    }
 
     const NavItems = navItems.map((item) => {
         const NavLink = item.isExternal ? Link : NextLink
@@ -55,6 +77,8 @@ const Navbar = ({
             direction="column"
             {...(sticky && {
                 bg: "var(--chakra-colors-chakra-body-bg)",
+                shadow: stickyEngaged ? "lg" : "none",
+                transition: "all 0.3s ease-out",
                 position: "sticky",
                 zIndex: "sticky",
                 top: 0,
