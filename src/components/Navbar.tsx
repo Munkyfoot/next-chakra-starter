@@ -64,7 +64,7 @@ const Navbar = ({
     })
 
     return (
-        <>
+        <Flex w="full" align="stretch" direction="column">
             <Flex
                 as="nav"
                 align="center"
@@ -94,20 +94,20 @@ const Navbar = ({
                     />
                 )}
             </Flex>
-            <Collapse in={isOpen} animateOpacity>
+            <Collapse in={isOpen && isMobile} animateOpacity>
                 <Flex
                     direction="column"
                     align="end"
                     justify="center"
                     w="full"
-                    pb={4}
+                    py={4}
                     borderBottomWidth={1}
                     borderColor="gray.200"
                 >
                     <>{...NavItems}</>
                 </Flex>
             </Collapse>
-        </>
+        </Flex>
     )
 }
 
