@@ -70,7 +70,6 @@ const Navbar = ({
                 align="center"
                 justify="space-between"
                 wrap="wrap"
-                w="full"
                 {...rest}
             >
                 {!isMobile && <>{...NavItems}</>}

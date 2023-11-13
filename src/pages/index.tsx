@@ -13,9 +13,6 @@ export default function Home() {
         <Layout
             title="Start Here"
             description="A starter template for Next.js projects using TypeScript and ChakraUI."
-            gap={6}
-            padding={6}
-            maxW="container.lg"
         >
             <Heading as="h1" size="2xl">
                 Next.js + TypeScript + ChakraUI Starter

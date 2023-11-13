@@ -51,14 +51,7 @@ const Footer = ({
     })
 
     return (
-        <Flex
-            as="footer"
-            direction="column"
-            align="center"
-            mt="auto"
-            gap={6}
-            {...rest}
-        >
+        <Flex as="footer" direction="column" align="center" gap={6} {...rest}>
             <SimpleGrid
                 w="full"
                 columns={{
