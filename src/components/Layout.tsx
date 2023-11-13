@@ -55,8 +55,10 @@ const Layout = ({
     mainMaxWidth = "container.lg",
     mainAlign = "start",
     navPadding = 4,
-    navGap = 6,
+    navGap = 4,
     navSticky = true,
+    footerPadding = 6,
+    footerGap = 6,
 }: LayoutProps) => {
     const mergedNavItems =
         navItemsMergeConstants === "replace"
@@ -147,7 +149,7 @@ const Layout = ({
                               )
                           })}
                 </Flex>
-                {!hideFooter && <Footer p={mainPadding} gap={mainGap} />}
+                {!hideFooter && <Footer p={footerPadding} gap={footerGap} />}
             </Flex>
         </>
     )

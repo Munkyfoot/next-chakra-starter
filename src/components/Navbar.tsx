@@ -8,10 +8,10 @@ import {
     IconButton,
     Link,
     useColorMode,
-    useColorModeValue,
     useDisclosure,
 } from "@chakra-ui/react"
-import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 interface NavbarProps extends FlexProps {
     navItems: NavItem[]
@@ -25,6 +25,8 @@ const Navbar = ({
     showColorModeToggle,
     ...rest
 }: NavbarProps) => {
+    const router = useRouter()
+
     const { isOpen, onToggle } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
 
@@ -53,15 +55,25 @@ const Navbar = ({
 
         return (
             <NavLink
-                href={item.href}
+                href={router.pathname === item.href ? "#" : item.href}
                 key={item.name}
                 fontSize="xl"
                 fontWeight="semibold"
+                borderBottomWidth={1}
+                borderBottomColor={
+                    router.pathname === item.href
+                        ? "currentColor"
+                        : "transparent"
+                }
                 _hover={{
                     textDecoration: "none",
-                    transform: "scale(1.05)",
+                    borderBottomColor:
+                        router.pathname === item.href
+                            ? undefined
+                            : "currentColor",
                 }}
-                transition={"all 0.15s ease-in-out"}
+                cursor={router.pathname === item.href ? "default" : undefined}
+                transition={"border-color 0.15s ease-in-out"}
                 isExternal={item.isExternal}
             >
                 {item.name}
