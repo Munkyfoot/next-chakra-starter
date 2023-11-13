@@ -11,6 +11,7 @@ import Head from "next/head"
 import React, { useState, useEffect } from "react"
 import Navbar from "./Navbar"
 import SlideFadeOnView from "./SlideFadeOnView"
+import Footer from "./Footer"
 
 interface LayoutProps extends FlexProps {
     title: string
@@ -18,6 +19,7 @@ interface LayoutProps extends FlexProps {
     children: React.ReactNode
     fadeStyle?: "sync" | "delayed" | "none"
     hideNavbar?: boolean
+    hideFooter?: boolean
     navItems?: NavItem[]
     navItemsMergeConstants?: "replace" | "append" | "prepend"
 }
@@ -28,6 +30,7 @@ const Layout = ({
     children,
     fadeStyle = "delayed",
     hideNavbar = false,
+    hideFooter = false,
     navItems = [],
     navItemsMergeConstants = "append",
     ...rest
@@ -71,7 +74,7 @@ const Layout = ({
                 {/* TODO: Add twitter image */}
                 {/*<meta name="twitter:image" content="/twitter-image.png" />*/}
             </Head>
-            <Flex as="main" direction="column" mx="auto" {...rest}>
+            <Flex as="main" direction="column" mx="auto" minH="100vh" {...rest}>
                 {!hideNavbar && (
                     <Navbar navItems={mergedNavItems} showColorModeToggle />
                 )}
@@ -96,6 +99,7 @@ const Layout = ({
                               </SlideFadeOnView>
                           )
                       })}
+                {!hideFooter && <Footer hideSiteTitle />}
             </Flex>
         </>
     )

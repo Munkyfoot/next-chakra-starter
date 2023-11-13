@@ -57,6 +57,7 @@ const Navbar = ({
                     transform: "scale(1.05)",
                 }}
                 transition={"all 0.15s ease-in-out"}
+                isExternal={item.isExternal}
             >
                 {item.name}
             </NavLink>

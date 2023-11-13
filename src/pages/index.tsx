@@ -86,14 +86,14 @@ export default function Home() {
                                     </Code>{" "}
                                     <i>
                                         A <Code>Flex</Code> component that
-                                        contains the Navbar, which can be
-                                        optionally hidden, and page content. It
-                                        also uses the{" "}
-                                        <Code>SlideFadeOnView</Code> component
-                                        to animate the page content when it
-                                        comes into view. This can be disabled by
-                                        passing <Code>fadeStyle="none"</Code> as
-                                        a prop.
+                                        contains the custom <Code>Navbar</Code>{" "}
+                                        and <Code>Footer</Code> components,
+                                        which can be optionally hidden, and page
+                                        content. Children are wrapped in{" "}
+                                        <Code>SlideFadeOnView</Code> components
+                                        to animate them when they come into
+                                        view. This can be disabled by passing{" "}
+                                        <Code>fadeStyle="none"</Code> as a prop.
                                     </i>
                                 </ListItem>
                             </List>
@@ -112,6 +112,16 @@ export default function Home() {
                             </Heading>
                             A responsive navbar component that can be configured
                             with navigation items and a color mode toggle.
+                        </ListItem>
+                        <ListItem>
+                            <Heading as="h3" size="md">
+                                Footer
+                            </Heading>
+                            A footer component that can be configured with
+                            navigation items. Also displays the site title and
+                            copyright information, which can be toggled by
+                            passing <Code>hideSiteTitle</Code> and{" "}
+                            <Code>hideCopyRight</Code> as props.
                         </ListItem>
                     </List>
                 </ListItem>
