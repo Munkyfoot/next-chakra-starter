@@ -1,17 +1,17 @@
 import {
+    siteAuthor,
     siteCanonical,
     siteDescription,
-    siteAuthor,
     siteNavItems,
     siteTitle,
 } from "@/constants"
 import { NavItem } from "@/types"
 import { Flex, FlexProps } from "@chakra-ui/react"
 import Head from "next/head"
-import React, { useState, useEffect } from "react"
+import React from "react"
+import Footer from "./Footer"
 import Navbar from "./Navbar"
 import SlideFadeOnView from "./SlideFadeOnView"
-import Footer from "./Footer"
 
 interface LayoutProps {
     title: string

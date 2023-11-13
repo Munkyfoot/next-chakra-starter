@@ -10,7 +10,6 @@ import {
     useColorMode,
     useDisclosure,
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
 
 interface NavbarProps extends FlexProps {
     navItems: NavItem[]

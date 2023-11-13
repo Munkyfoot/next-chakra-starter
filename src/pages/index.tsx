@@ -1,11 +1,11 @@
 import Layout from "@/components/Layout"
 import {
+    Code,
     Heading,
-    UnorderedList,
     List,
     ListItem,
     Text,
-    Code,
+    UnorderedList,
 } from "@chakra-ui/react"
 
 export default function Home() {
