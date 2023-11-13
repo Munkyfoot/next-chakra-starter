@@ -53,12 +53,13 @@ export default function Home() {
                     <Heading as="h2" size="lg">
                         Custom Components
                     </Heading>
-                    <List spacing={2} mt={2}>
+                    <List spacing={4} mt={2}>
                         <ListItem>
                             <Heading as="h3" size="md">
                                 Layout
                             </Heading>
-                            Contains the basic layout for the pages including...
+                            Allows for easy configuration of the layout of the
+                            page. The layout is broken down into the following:
                             <List>
                                 <ListItem>
                                     <Code
@@ -79,18 +80,45 @@ export default function Home() {
                                         colorScheme="blue"
                                         fontWeight="semibold"
                                     >
+                                        Navbar
+                                    </Code>{" "}
+                                    <i>
+                                        A responsive navbar component that can
+                                        be configured with navigation items and
+                                        a color mode toggle. Navigation items
+                                        can be passed as props and will be
+                                        merged with the site navigation items
+                                        from <Code>@/constants.ts</Code>.
+                                    </i>
+                                </ListItem>
+                                <ListItem>
+                                    <Code
+                                        colorScheme="blue"
+                                        fontWeight="semibold"
+                                    >
                                         Main
                                     </Code>{" "}
                                     <i>
-                                        A <Code>Flex</Code> component that
-                                        contains the custom <Code>Navbar</Code>{" "}
-                                        and <Code>Footer</Code> components,
-                                        which can be optionally hidden, and page
-                                        content. Children are wrapped in{" "}
-                                        <Code>SlideFadeOnView</Code> components
-                                        to animate them when they come into
-                                        view. This can be disabled by passing{" "}
-                                        <Code>fadeStyle="none"</Code> as a prop.
+                                        The main content of the page. Can be any
+                                        valid React node. Wraps the children
+                                        with <Code>SlideFadeOnView</Code> from
+                                        <Code>
+                                            @/components/SlideFadeOnView
+                                        </Code>
+                                        . The fade style can be passed as a
+                                        prop.
+                                    </i>
+                                </ListItem>
+                                <ListItem>
+                                    <Code
+                                        colorScheme="blue"
+                                        fontWeight="semibold"
+                                    >
+                                        Footer
+                                    </Code>{" "}
+                                    <i>
+                                        A footer component that can be
+                                        configured with navigation items.
                                     </i>
                                 </ListItem>
                             </List>
