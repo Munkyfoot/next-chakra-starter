@@ -31,22 +31,12 @@ const Layout = ({
     navItemsMergeConstants = "append",
     ...rest
 }: LayoutProps) => {
-    const [navItemsState, setNavItemsState] = useState<NavItem[]>([])
-    const mergeNavItems = () => {
-        switch (navItemsMergeConstants) {
-            case "replace":
-                return navItems
-            case "append":
-                return [...siteNavItems, ...navItems]
-            case "prepend":
-                return [...navItems, ...siteNavItems]
-            default:
-                return [...siteNavItems, ...navItems]
-        }
-    }
-    useEffect(() => {
-        setNavItemsState(mergeNavItems())
-    }, [navItems])
+    const mergedNavItems =
+        navItemsMergeConstants === "replace"
+            ? navItems
+            : navItemsMergeConstants === "append"
+            ? [...siteNavItems, ...navItems]
+            : [...navItems, ...siteNavItems]
 
     return (
         <>
@@ -75,7 +65,7 @@ const Layout = ({
             </Head>
             <Flex as="main" direction="column" mx="auto" {...rest}>
                 {!hideNavbar && (
-                    <Navbar navItems={navItemsState} showColorModeToggle />
+                    <Navbar navItems={mergedNavItems} showColorModeToggle />
                 )}
                 {fadeStyle === "none"
                     ? children
