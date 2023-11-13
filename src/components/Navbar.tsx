@@ -14,34 +14,18 @@ import { useEffect, useState } from "react"
 
 interface NavbarProps extends FlexProps {
     navItems: NavItem[]
-    collapseOnMobile?: boolean
+    sticky?: boolean
     showColorModeToggle?: boolean
 }
 
 const Navbar = ({
     navItems,
-    collapseOnMobile,
+    sticky,
     showColorModeToggle,
     ...rest
 }: NavbarProps) => {
     const { isOpen, onToggle } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
-
-    const [isMobile, setIsMobile] = useState(false)
-
-    const handleResize = () => {
-        if (window.innerWidth < 768) {
-            setIsMobile(true)
-        } else {
-            setIsMobile(false)
-        }
-    }
-
-    useEffect(() => {
-        handleResize()
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
 
     const NavItems = navItems.map((item) => {
         const NavLink = item.isExternal ? Link : NextLink
@@ -65,14 +49,31 @@ const Navbar = ({
     })
 
     return (
-        <Flex as="nav" w="full" align="stretch" direction="column">
-            <Flex
-                align="center"
-                justify="space-between"
-                wrap="wrap"
-                {...rest}
-            >
-                {!isMobile && <>{...NavItems}</>}
+        <Flex
+            as="nav"
+            w="full"
+            align="stretch"
+            direction="column"
+            {...(sticky && {
+                bg: "var(--chakra-colors-chakra-body-bg)",
+                position: "sticky",
+                zIndex: "sticky",
+                top: 0,
+            })}
+        >
+            <Flex align="center" justify="space-between" wrap="wrap" {...rest}>
+                <Flex
+                    display={{
+                        base: "none",
+                        md: "flex",
+                    }}
+                    align="center"
+                    justify="flex-start"
+                    wrap="wrap"
+                    gap={rest.gap}
+                >
+                    {...NavItems}
+                </Flex>
 
                 {showColorModeToggle && (
                     <IconButton
@@ -83,17 +84,19 @@ const Navbar = ({
                         rounded={"full"}
                     />
                 )}
-                {isMobile && (
-                    <IconButton
-                        aria-label="Toggle menu"
-                        icon={<HamburgerIcon />}
-                        onClick={onToggle}
-                        variant={"ghost"}
-                        rounded={"full"}
-                    />
-                )}
+                <IconButton
+                    display={{
+                        base: "inline-flex",
+                        md: "none",
+                    }}
+                    aria-label="Toggle menu"
+                    icon={<HamburgerIcon />}
+                    onClick={onToggle}
+                    variant={"ghost"}
+                    rounded={"full"}
+                />
             </Flex>
-            <Collapse in={isOpen && isMobile} animateOpacity>
+            <Collapse in={isOpen} animateOpacity>
                 <Flex
                     direction="column"
                     align="end"
@@ -102,6 +105,7 @@ const Navbar = ({
                     py={4}
                     borderBottomWidth={1}
                     borderColor="gray.200"
+                    {...rest}
                 >
                     <>{...NavItems}</>
                 </Flex>

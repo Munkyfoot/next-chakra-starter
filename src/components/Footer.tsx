@@ -16,7 +16,6 @@ import {
 
 interface FooterProps extends FlexProps {
     navItems?: NavItem[]
-    hideSiteTitle?: boolean
     hideCopyright?: boolean
     copyrightOwner?: "site-author" | "site-title"
     columns?: SimpleGridProps["columns"]
@@ -24,7 +23,6 @@ interface FooterProps extends FlexProps {
 
 const Footer = ({
     navItems = [],
-    hideSiteTitle = false,
     hideCopyright = false,
     copyrightOwner = "site-title",
     ...rest
@@ -51,32 +49,31 @@ const Footer = ({
     })
 
     return (
-        <Flex as="footer" direction="column" align="center" gap={6} {...rest}>
-            <SimpleGrid
-                w="full"
-                columns={{
-                    base: 1,
-                    md: 2,
-                    lg: 3,
-                }}
-                {...rest}
-                maxW="container.lg"
-            >
-                <GridItem>
-                    {!hideSiteTitle && (
+        <Flex as="footer" direction="column" align="center" {...rest}>
+            {navItems.length > 0 && (
+                <SimpleGrid
+                    w="full"
+                    columns={{
+                        base: 1,
+                        md: 2,
+                        lg: 3,
+                    }}
+                    maxW="container.lg"
+                >
+                    <GridItem>
                         <Heading as="h2" size="lg">
                             {siteTitle}
                         </Heading>
-                    )}
-                    {navItems.length > 0 && (
-                        <List>
-                            {NavItems.map((item) => (
-                                <ListItem key={item.key}>{item}</ListItem>
-                            ))}
-                        </List>
-                    )}
-                </GridItem>
-            </SimpleGrid>
+                        {navItems.length > 0 && (
+                            <List>
+                                {NavItems.map((item) => (
+                                    <ListItem key={item.key}>{item}</ListItem>
+                                ))}
+                            </List>
+                        )}
+                    </GridItem>
+                </SimpleGrid>
+            )}
 
             {!hideCopyright && (
                 <Text fontSize="sm">
