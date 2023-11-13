@@ -32,23 +32,23 @@ const Navbar = ({
 
     const [stickyEngaged, setStickyEngaged] = useState(false)
 
-    if (sticky) {
-        useEffect(() => {
-            const handleScroll = () => {
-                if (window.scrollY > 0) {
-                    setStickyEngaged(true)
-                } else {
-                    setStickyEngaged(false)
-                }
-            }
+    useEffect(() => {
+        if (!sticky) return
 
-            window.addEventListener("scroll", handleScroll)
-
-            return () => {
-                window.removeEventListener("scroll", handleScroll)
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setStickyEngaged(true)
+            } else {
+                setStickyEngaged(false)
             }
-        }, [])
-    }
+        }
+
+        window.addEventListener("scroll", handleScroll)
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [])
 
     const NavItems = navItems.map((item) => {
         const NavLink = item.isExternal ? Link : NextLink
@@ -105,6 +105,7 @@ const Navbar = ({
                     align="center"
                     justify="flex-start"
                     wrap="wrap"
+                    px={2}
                     gap={rest.gap}
                 >
                     {...NavItems}
@@ -133,6 +134,10 @@ const Navbar = ({
             </Flex>
             <Collapse in={isOpen} animateOpacity>
                 <Flex
+                    display={{
+                        base: "flex",
+                        md: "none",
+                    }}
                     direction="column"
                     align="end"
                     justify="center"
