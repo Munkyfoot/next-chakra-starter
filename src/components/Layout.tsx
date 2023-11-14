@@ -149,7 +149,14 @@ const Layout = ({
                               )
                           })}
                 </Flex>
-                {!hideFooter && <Footer p={footerPadding} gap={footerGap} />}
+                {!hideFooter && (
+                    <Footer
+                        p={footerPadding}
+                        gap={footerGap}
+                        hideCopyright
+                        navItems={siteNavItems}
+                    />
+                )}
             </Flex>
         </>
     )

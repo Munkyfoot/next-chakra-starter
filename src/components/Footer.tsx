@@ -10,7 +10,6 @@ import {
     List,
     ListItem,
     SimpleGrid,
-    SimpleGridProps,
     Text,
 } from "@chakra-ui/react"
 
@@ -18,7 +17,6 @@ interface FooterProps extends FlexProps {
     navItems?: NavItem[]
     hideCopyright?: boolean
     copyrightOwner?: "site-author" | "site-title"
-    columns?: SimpleGridProps["columns"]
 }
 
 const Footer = ({
@@ -34,13 +32,14 @@ const Footer = ({
             <NavLink
                 href={item.href}
                 key={item.name}
-                fontSize="xl"
-                fontWeight="semibold"
+                fontSize="lg"
+                borderBottomWidth={1}
+                borderBottomColor="transparent"
                 _hover={{
                     textDecoration: "none",
-                    transform: "scale(1.05)",
+                    borderBottomColor: "currentColor",
                 }}
-                transition={"all 0.15s ease-in-out"}
+                transition={"border-color 0.15s ease-in-out"}
                 isExternal={item.isExternal}
             >
                 {item.name}
@@ -49,7 +48,7 @@ const Footer = ({
     })
 
     return (
-        <Flex as="footer" direction="column" align="center" {...rest}>
+        <Flex w="full" as="footer" direction="column" align="center" {...rest}>
             {navItems.length > 0 && (
                 <SimpleGrid
                     w="full"
@@ -58,14 +57,14 @@ const Footer = ({
                         md: 2,
                         lg: 3,
                     }}
-                    maxW="container.lg"
+                    gap={rest.gap}
                 >
                     <GridItem>
-                        <Heading as="h2" size="lg">
-                            {siteTitle}
+                        <Heading as="h3" size="md" mb={2}>
+                            Sitemap
                         </Heading>
                         {navItems.length > 0 && (
-                            <List>
+                            <List spacing={2} ml={2}>
                                 {NavItems.map((item) => (
                                     <ListItem key={item.key}>{item}</ListItem>
                                 ))}

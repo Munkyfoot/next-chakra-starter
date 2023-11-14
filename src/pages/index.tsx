@@ -143,10 +143,7 @@ export default function Home() {
                                 Footer
                             </Heading>
                             A footer component that can be configured with
-                            navigation items. Also displays the site title and
-                            copyright information, which can be toggled by
-                            passing <Code>hideSiteTitle</Code> and{" "}
-                            <Code>hideCopyRight</Code> as props.
+                            navigation items.
                         </ListItem>
                     </List>
                 </ListItem>

@@ -72,8 +72,8 @@ const Navbar = ({
                             ? undefined
                             : "currentColor",
                 }}
-                cursor={router.pathname === item.href ? "default" : undefined}
                 transition={"border-color 0.15s ease-in-out"}
+                cursor={router.pathname === item.href ? "default" : undefined}
                 isExternal={item.isExternal}
             >
                 {item.name}
