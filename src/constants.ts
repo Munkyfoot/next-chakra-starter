@@ -6,3 +6,10 @@ export const siteDescription =
 export const siteCanonical = "https://example.com"
 export const siteAuthor = "Munkyfoot"
 export const siteNavItems: NavItem[] = [{ name: "Start Here", href: "/" }]
+export const externalNavItems: NavItem[] = [
+    {
+        name: "GitHub Repo",
+        href: "https://github.com/Munkyfoot/next-chakra-starter",
+        isExternal: true,
+    },
+]

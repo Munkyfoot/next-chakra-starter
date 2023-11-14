@@ -15,36 +15,14 @@ import {
 
 interface FooterSectionProps extends FlexProps {
     title: string
-    children: React.ReactNode
+    navItems?: NavItem[]
 }
 
 export const FooterSection = ({
     title,
-    children,
-    ...rest
-}: FooterSectionProps) => (
-    <Flex direction="column" {...rest}>
-        <Heading as="h3" size="md" mb={2}>
-            {title}
-        </Heading>
-        {children}
-    </Flex>
-)
-
-interface FooterProps extends FlexProps {
-    navItems?: NavItem[]
-    sections?: FooterSectionProps[]
-    hideCopyright?: boolean
-    copyrightOwner?: "site-author" | "site-title"
-}
-
-const Footer = ({
     navItems = [],
-    sections = [],
-    hideCopyright = false,
-    copyrightOwner = "site-title",
     ...rest
-}: FooterProps) => {
+}: FooterSectionProps) => {
     const NavItems = navItems.map((item) => {
         const NavLink = item.isExternal ? Link : NextLink
 
@@ -68,8 +46,36 @@ const Footer = ({
     })
 
     return (
-        <Flex w="full" as="footer" direction="column" align="center" {...rest}>
+        <Flex direction="column" {...rest}>
+            <Heading as="h3" size="md" mb={2}>
+                {title}
+            </Heading>
             {navItems.length > 0 && (
+                <List spacing={2} ml={2}>
+                    {NavItems.map((item) => (
+                        <ListItem key={item.key}>{item}</ListItem>
+                    ))}
+                </List>
+            )}
+        </Flex>
+    )
+}
+
+interface FooterProps extends FlexProps {
+    sections?: FooterSectionProps[]
+    hideCopyright?: boolean
+    copyrightOwner?: "site-author" | "site-title"
+}
+
+const Footer = ({
+    sections = [],
+    hideCopyright = false,
+    copyrightOwner = "site-title",
+    ...rest
+}: FooterProps) => {
+    return (
+        <Flex w="full" as="footer" direction="column" align="center" {...rest}>
+            {sections.length > 0 && (
                 <SimpleGrid
                     w="full"
                     columns={{
@@ -79,18 +85,6 @@ const Footer = ({
                     }}
                     gap={rest.gap}
                 >
-                    <GridItem>
-                        <Heading as="h3" size="md" mb={2}>
-                            Sitemap
-                        </Heading>
-                        {navItems.length > 0 && (
-                            <List spacing={2} ml={2}>
-                                {NavItems.map((item) => (
-                                    <ListItem key={item.key}>{item}</ListItem>
-                                ))}
-                            </List>
-                        )}
-                    </GridItem>
                     {sections.map((section) => (
                         <GridItem key={section.title}>
                             <FooterSection {...section} />

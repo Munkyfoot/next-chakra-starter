@@ -1,4 +1,5 @@
 import {
+    externalNavItems,
     siteAuthor,
     siteCanonical,
     siteDescription,
@@ -162,7 +163,16 @@ const Layout = ({
                         p={footerPadding}
                         gap={footerGap}
                         hideCopyright
-                        navItems={siteNavItems}
+                        sections={[
+                            {
+                                title: "Sitemap",
+                                navItems: siteNavItems,
+                            },
+                            {
+                                title: "Links",
+                                navItems: externalNavItems,
+                            },
+                        ]}
                         maxW={footerMaxWidth}
                     />
                 )}

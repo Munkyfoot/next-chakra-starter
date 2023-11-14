@@ -83,12 +83,9 @@ export default function Home() {
                                         Navbar
                                     </Code>{" "}
                                     <i>
-                                        A responsive navbar component that can
-                                        be configured with navigation items and
-                                        a color mode toggle. Navigation items
-                                        can be passed as props and will be
-                                        merged with the site navigation items
-                                        from <Code>@/constants.ts</Code>.
+                                        See <Code>Navbar</Code> component below.
+                                        <Code>Layout</Code> component includes
+                                        props for configuring the navbar.
                                     </i>
                                 </ListItem>
                                 <ListItem>
@@ -117,9 +114,9 @@ export default function Home() {
                                         Footer
                                     </Code>{" "}
                                     <i>
-                                        A footer component that can be
-                                        configured with navigation items and
-                                        extra sections.
+                                        See <Code>Footer</Code> component below.
+                                        <Code>Layout</Code> component includes
+                                        props for configuring the footer.
                                     </i>
                                 </ListItem>
                             </List>
@@ -143,8 +140,15 @@ export default function Home() {
                             <Heading as="h3" size="md">
                                 Footer
                             </Heading>
-                            A footer component that can be configured with
-                            navigation items.
+                            A footer component that takes an array of{" "}
+                            <Code>FooterSection</Code> components as props.
+                        </ListItem>
+                        <ListItem>
+                            <Heading as="h3" size="md">
+                                FooterSection
+                            </Heading>
+                            A footer section component that takes a title and an
+                            array of navigation items as props.
                         </ListItem>
                     </List>
                 </ListItem>
@@ -183,7 +187,16 @@ export default function Home() {
                             <Code>siteNavItems</Code>{" "}
                             <i>
                                 The navigation items for the site. Used in the{" "}
-                                <Code>Navbar</Code> component.
+                                <Code>Navbar</Code> and <Code>Footer</Code>{" "}
+                                components in the <Code>Layout</Code> component.
+                            </i>
+                        </ListItem>
+                        <ListItem>
+                            <Code>externalNavItems</Code>{" "}
+                            <i>
+                                The external navigation items for the site. Used
+                                in the <Code>Footer</Code> component in the{" "}
+                                <Code>Layout</Code> component.
                             </i>
                         </ListItem>
                     </List>
