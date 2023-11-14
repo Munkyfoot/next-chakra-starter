@@ -152,6 +152,9 @@ const Layout = ({
                                                       : 0,
                                           },
                                       }}
+                                      style={{
+                                          width: "100%",
+                                      }}
                                   >
                                       {child}
                                   </SlideFadeOnView>
