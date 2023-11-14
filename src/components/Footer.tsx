@@ -13,14 +13,34 @@ import {
     Text,
 } from "@chakra-ui/react"
 
+interface FooterSectionProps extends FlexProps {
+    title: string
+    children: React.ReactNode
+}
+
+export const FooterSection = ({
+    title,
+    children,
+    ...rest
+}: FooterSectionProps) => (
+    <Flex direction="column" {...rest}>
+        <Heading as="h3" size="md" mb={2}>
+            {title}
+        </Heading>
+        {children}
+    </Flex>
+)
+
 interface FooterProps extends FlexProps {
     navItems?: NavItem[]
+    sections?: FooterSectionProps[]
     hideCopyright?: boolean
     copyrightOwner?: "site-author" | "site-title"
 }
 
 const Footer = ({
     navItems = [],
+    sections = [],
     hideCopyright = false,
     copyrightOwner = "site-title",
     ...rest
@@ -71,6 +91,11 @@ const Footer = ({
                             </List>
                         )}
                     </GridItem>
+                    {sections.map((section) => (
+                        <GridItem key={section.title}>
+                            <FooterSection {...section} />
+                        </GridItem>
+                    ))}
                 </SimpleGrid>
             )}
 

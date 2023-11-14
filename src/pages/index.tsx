@@ -13,7 +13,6 @@ export default function Home() {
         <Layout
             title="Start Here"
             description="A starter template for Next.js projects using TypeScript and ChakraUI."
-            hideFooter
         >
             <Heading as="h1" size="2xl">
                 Next.js + TypeScript + ChakraUI Starter
@@ -119,7 +118,8 @@ export default function Home() {
                                     </Code>{" "}
                                     <i>
                                         A footer component that can be
-                                        configured with navigation items.
+                                        configured with navigation items and
+                                        extra sections.
                                     </i>
                                 </ListItem>
                             </List>

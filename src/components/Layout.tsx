@@ -31,9 +31,13 @@ interface LayoutProps {
     mainAlign?: FlexProps["align"]
     navPadding?: FlexProps["p"]
     navGap?: FlexProps["gap"]
+    navMaxWidth?: FlexProps["maxW"]
+    navAlign?: FlexProps["align"]
     navSticky?: boolean
     footerPadding?: FlexProps["p"]
     footerGap?: FlexProps["gap"]
+    footerMaxWidth?: FlexProps["maxW"]
+    footerAlign?: FlexProps["align"]
     children: React.ReactNode
 }
 
@@ -56,9 +60,11 @@ const Layout = ({
     mainAlign = "start",
     navPadding = 4,
     navGap = 4,
+    navMaxWidth = "full",
     navSticky = true,
     footerPadding = 6,
     footerGap = 6,
+    footerMaxWidth = "container.lg",
 }: LayoutProps) => {
     const mergedNavItems =
         navItemsMergeConstants === "replace"
@@ -107,6 +113,7 @@ const Layout = ({
                 gap={layoutGap}
                 maxW={layoutMaxWidth}
                 align={layoutAlign}
+                mx="auto"
             >
                 {!hideNavbar && (
                     <Navbar
@@ -115,6 +122,7 @@ const Layout = ({
                         showColorModeToggle
                         p={navPadding}
                         gap={navGap}
+                        maxW={navMaxWidth}
                     />
                 )}
                 <Flex
@@ -155,6 +163,7 @@ const Layout = ({
                         gap={footerGap}
                         hideCopyright
                         navItems={siteNavItems}
+                        maxW={footerMaxWidth}
                     />
                 )}
             </Flex>
