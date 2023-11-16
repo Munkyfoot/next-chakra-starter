@@ -29,8 +29,6 @@ const SlideFadeOnView = (props: SlideFadeProps) => {
               },
           }
 
-    console.log(adjustedProps)
-
     return <SlideFade ref={ref} in={isInView} {...adjustedProps} />
 }
 
