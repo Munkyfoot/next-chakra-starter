@@ -48,7 +48,7 @@ const Navbar = ({
         return () => {
             window.removeEventListener("scroll", handleScroll)
         }
-    }, [])
+    }, [sticky])
 
     const NavItems = navItems.map((item) => {
         const NavLink = item.isExternal ? Link : NextLink
