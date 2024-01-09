@@ -153,6 +153,8 @@ const Layout = ({
                                           },
                                       }}
                                       style={{
+                                          display: "flex",
+                                          justifyContent: mainAlign as any,
                                           width: "100%",
                                       }}
                                   >
