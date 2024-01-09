@@ -88,7 +88,7 @@ const Navbar = ({
             align="stretch"
             direction="column"
             {...(sticky && {
-                bg: "var(--chakra-colors-chakra-body-bg)",
+                layerStyle: stickyEngaged ? "glass" : undefined,
                 shadow: stickyEngaged ? "lg" : "none",
                 transition: "all 0.3s ease-out",
                 position: "sticky",
