@@ -5,6 +5,7 @@ import {
     GridItem,
     Heading,
     SimpleGrid,
+    Spacer,
     Text,
 } from "@chakra-ui/react"
 
@@ -67,6 +68,7 @@ const Footer = ({
                     }
                 </Text>
             )}
+            <Spacer display={{ base: "none", md: "flex" }} minH={4} />
         </Flex>
     )
 }
