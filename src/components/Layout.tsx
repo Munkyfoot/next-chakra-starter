@@ -13,6 +13,7 @@ import React from "react"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 import SlideFadeOnView from "./SlideFadeOnView"
+import NavItems from "./NavItems"
 
 interface LayoutProps {
     title: string
@@ -169,11 +170,11 @@ const Layout = ({
                         sections={[
                             {
                                 title: "Sitemap",
-                                navItems: siteNavItems,
+                                children: <NavItems loc="site" />,
                             },
                             {
                                 title: "Links",
-                                navItems: externalNavItems,
+                                children: <NavItems loc="external" />,
                             },
                         ]}
                         maxW={footerMaxWidth}

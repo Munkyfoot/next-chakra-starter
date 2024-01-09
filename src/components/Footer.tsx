@@ -15,48 +15,16 @@ import {
 
 interface FooterSectionProps extends FlexProps {
     title: string
-    navItems?: NavItem[]
 }
 
-export const FooterSection = ({
-    title,
-    navItems = [],
-    ...rest
-}: FooterSectionProps) => {
-    const NavItems = navItems.map((item) => {
-        const NavLink = item.isExternal ? Link : NextLink
-
-        return (
-            <NavLink
-                href={item.href}
-                key={item.name}
-                fontSize="lg"
-                borderBottomWidth={1}
-                borderBottomColor="transparent"
-                _hover={{
-                    textDecoration: "none",
-                    borderBottomColor: "currentColor",
-                }}
-                transition={"border-color 0.15s ease-in-out"}
-                isExternal={item.isExternal}
-            >
-                {item.name}
-            </NavLink>
-        )
-    })
-
+export const FooterSection = ({ title, ...rest }: FooterSectionProps) => {
+    const { children, ...props } = rest
     return (
-        <Flex direction="column" {...rest}>
+        <Flex direction="column" {...props}>
             <Heading as="h3" size="md" mb={2}>
                 {title}
             </Heading>
-            {navItems.length > 0 && (
-                <List spacing={2} ml={2}>
-                    {NavItems.map((item) => (
-                        <ListItem key={item.key}>{item}</ListItem>
-                    ))}
-                </List>
-            )}
+            {children}
         </Flex>
     )
 }
@@ -80,8 +48,8 @@ const Footer = ({
                     w="full"
                     columns={{
                         base: 1,
-                        md: 2,
-                        lg: 3,
+                        md: Math.min(sections.length, 2),
+                        lg: Math.min(sections.length, 3),
                     }}
                     gap={rest.gap}
                 >
