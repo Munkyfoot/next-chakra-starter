@@ -1,5 +1,4 @@
 import {
-    externalNavItems,
     siteAuthor,
     siteCanonical,
     siteDescription,
@@ -11,9 +10,9 @@ import { Flex, FlexProps } from "@chakra-ui/react"
 import Head from "next/head"
 import React from "react"
 import Footer from "./Footer"
+import NavItems from "./NavItems"
 import Navbar from "./Navbar"
 import SlideFadeOnView from "./SlideFadeOnView"
-import NavItems from "./NavItems"
 
 interface LayoutProps {
     title: string

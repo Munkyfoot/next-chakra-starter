@@ -1,6 +1,6 @@
 import { externalNavItems, siteNavItems } from "@/constants"
-import { Link } from "@chakra-ui/react"
 import { Link as NextLink } from "@chakra-ui/next-js"
+import { Link } from "@chakra-ui/react"
 
 interface NavItemsProps {
     loc?: "site" | "external" | "all"

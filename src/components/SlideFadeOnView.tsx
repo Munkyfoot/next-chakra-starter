@@ -1,6 +1,6 @@
 import { SlideFade, SlideFadeProps } from "@chakra-ui/react"
 import { useInView } from "framer-motion"
-import { useRef, useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const SlideFadeOnView = (props: SlideFadeProps) => {
     const ref = useRef<HTMLDivElement>(null)

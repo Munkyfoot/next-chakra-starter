@@ -1,14 +1,9 @@
 import { siteAuthor, siteTitle } from "@/constants"
-import { NavItem } from "@/types"
-import { Link as NextLink } from "@chakra-ui/next-js"
 import {
     Flex,
     FlexProps,
     GridItem,
     Heading,
-    Link,
-    List,
-    ListItem,
     SimpleGrid,
     Text,
 } from "@chakra-ui/react"
