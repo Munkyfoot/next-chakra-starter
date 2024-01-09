@@ -20,10 +20,9 @@ const NavItems = ({ loc = "all" }: NavItemsProps) => {
                 const NavLink = item.isExternal ? Link : NextLink
 
                 return (
-                    <ListItem>
+                    <ListItem key={item.name}>
                         <NavLink
                             href={item.href}
-                            key={item.name}
                             fontSize="lg"
                             borderBottomWidth={1}
                             borderBottomColor="transparent"
